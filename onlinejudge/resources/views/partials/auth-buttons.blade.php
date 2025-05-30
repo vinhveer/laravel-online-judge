@@ -15,11 +15,18 @@
              x-transition:leave="transition ease-in duration-75"
              x-transition:leave-start="transform opacity-100 scale-100"
              x-transition:leave-end="transform opacity-0 scale-95"
-             class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
+             class="absolute right-0 mt-2 w-48 rounded-lg shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 overflow-hidden">
             <div class="py-1">
-                <form method="POST" action="{{ route('logout') }}">
+                <a href="{{ route('manage.accounts.details', Auth::user()->id) }}" 
+                   class="block w-full text-left px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 
+                          hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150 ease-in-out">
+                    Profile
+                </a>
+                <form method="POST" action="{{ route('logout') }}" class="w-full">
                     @csrf
-                    <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <button type="submit" 
+                            class="block w-full text-left px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 
+                                   hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150 ease-in-out">
                         Logout
                     </button>
                 </form>

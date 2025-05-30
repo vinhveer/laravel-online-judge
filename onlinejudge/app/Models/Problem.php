@@ -23,7 +23,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property bool $is_public
  * 
  * @property Collection|Submission[] $submissions
- * @property Collection|TestCase[] $test_cases
  *
  * @package App\Models
  */
@@ -51,10 +50,5 @@ class Problem extends Model
 	public function submissions()
 	{
 		return $this->hasMany(Submission::class, 'problem_id');
-	}
-
-	public function test_cases()
-	{
-		return $this->hasMany(TestCase::class, 'problem_id');
 	}
 }

@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Session
  * 
  * @property string $id
- * @property int|null $user_id
+ * @property string|null $user_id
  * @property string|null $ip_address
  * @property string|null $user_agent
  * @property string $payload
@@ -27,7 +27,6 @@ class Session extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'user_id' => 'int',
 		'last_activity' => 'int'
 	];
 

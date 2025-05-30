@@ -46,7 +46,7 @@ class User extends Authenticatable implements AuthenticatableContract
 		'email_verified_at' => 'datetime',
 		'is_admin' => 'bool',
 		'is_active' => 'bool',
-		'last_login_at' => 'datetime'
+		'last_login_at' => 'datetime',
 	];
 
 	protected $hidden = [
@@ -65,7 +65,10 @@ class User extends Authenticatable implements AuthenticatableContract
 		'avatar',
 		'bio',
 		'last_login_ip',
-		'last_login_at'
+		'last_login_at',
+		'location',
+		'website',
+		'social_links'
 	];
 
 	public function submissions()

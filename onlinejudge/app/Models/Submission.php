@@ -7,6 +7,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property User $user
  * @property Problem $problem
+ * @property Collection|SubmissionTestcase[] $submission_testcases
  *
  * @package App\Models
  */
@@ -62,5 +64,10 @@ class Submission extends Model
 	public function problem()
 	{
 		return $this->belongsTo(Problem::class, 'problem_id');
+	}
+
+	public function submission_testcases()
+	{
+		return $this->hasMany(SubmissionTestcase::class, 'submission_id');
 	}
 }

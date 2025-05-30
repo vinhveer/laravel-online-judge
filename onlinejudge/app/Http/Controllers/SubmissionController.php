@@ -21,7 +21,7 @@ class SubmissionController extends Controller
         ]);
 
         $submission = $problem->submissions()->create([
-            'user_id' => auth()->id(),
+            'user_id' => auth()->user()->id,
             'code' => $validated['code'],
             'language' => $validated['language'],
             'status' => 'pending',

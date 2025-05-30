@@ -11,12 +11,24 @@ class ProblemController extends Controller
     {
         $query = Problem::where('is_public', true);
 
+        // Search by name
         if ($request->filled('search')) {
             $query->where('name', 'like', '%' . $request->search . '%');
         }
 
+        // Filter by difficulty
         if ($request->filled('difficulty')) {
             $query->where('difficulty', $request->difficulty);
+        }
+
+        // Filter by time limit
+        if ($request->filled('time_limit')) {
+            $query->where('time_limit', $request->time_limit);
+        }
+
+        // Filter by memory limit
+        if ($request->filled('memory_limit')) {
+            $query->where('memory_limit', $request->memory_limit);
         }
 
         $problems = $query->orderByDesc('created_at')->paginate(10);

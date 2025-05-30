@@ -130,11 +130,14 @@
         const fileInput = document.getElementById('fileInput');
         let editor;
         
+        // Get theme from localStorage
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        
         // Initialize Monaco Editor
         editor = monaco.editor.create(document.getElementById('editor'), {
             value: '',
             language: 'cpp',
-            theme: 'vs-dark',
+            theme: currentTheme === 'dark' ? 'vs-dark' : 'vs',
             automaticLayout: true,
             minimap: {
                 enabled: false
@@ -172,6 +175,14 @@
 
         // Set initial language
         monaco.editor.setModelLanguage(editor.getModel(), 'cpp');
+
+        // Listen for theme changes
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'theme') {
+                const newTheme = e.newValue;
+                monaco.editor.setTheme(newTheme === 'dark' ? 'vs-dark' : 'vs');
+            }
+        });
     });
 </script>
 @endsection 

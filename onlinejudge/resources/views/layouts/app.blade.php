@@ -27,8 +27,9 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
-    <!-- Alpine.js -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
     @yield('styles')
 </head>
 <body class="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200">
@@ -63,6 +64,9 @@
     @include('partials.footer')
 
     <script src="{{ asset('js/mode.js') }}"></script>
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @stack('scripts')
     @yield('scripts')
 </body>
 </html>
